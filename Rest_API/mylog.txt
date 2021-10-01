@@ -1,0 +1,18 @@
+==============================================================================
+DELL OTEL                                                                     
+==============================================================================
+UI_AUTOMATION                                                         | FAIL |
+No keyword with name 'https://www.google.com' found.
+------------------------------------------------------------------------------
+REST_API_AUTOMATION-REQUEST LIBRARY                                   | PASS |
+------------------------------------------------------------------------------
+SOAP_API_Automation                                                   | FAIL |
+Setup failed:
+No keyword with name 'Runkeyword    Create Soap Client    D:/TAG_Automation/WSDLs/INT_326_A-B-C-D-generalServices/generalServices.wsdl    EOC_OrderStatus' found.
+------------------------------------------------------------------------------
+DELL OTEL                                                             | FAIL |
+3 tests, 1 passed, 2 failed
+==============================================================================
+Output:  C:\Automation\Robot_Framework\DELL_OTEL\Rest_API\output.xml
+Log:     C:\Automation\Robot_Framework\DELL_OTEL\Rest_API\log.html
+Report:  C:\Automation\Robot_Framework\DELL_OTEL\Rest_API\report.html

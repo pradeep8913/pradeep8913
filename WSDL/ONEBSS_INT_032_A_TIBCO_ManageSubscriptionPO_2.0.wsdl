@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:ns="http://www.ericsson.com/tibco/service/ManageSubscriptionPO" xmlns:ns0="http://www.ericsson.com/ESO/Error/v1" xmlns:ns01="http://www.ericsson.com/tibco/schema/ManageSubscriptionPO" xmlns:ns012="http://www.ericsson.com/EDD/Dictionary/v1" xmlns:ns0123="http://www.ericsson.com/ESO/Result/v2" xmlns:ns01234="http://www.ericsson.com/ESO/MessageHeader/v1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ManageSubscriptionPO" targetNamespace="http://www.ericsson.com/tibco/service/ManageSubscriptionPO">
+  <wsdl:types>
+    <xsd:schema xmlns:eddns_dictionary="http://www.ericsson.com/EDD/Dictionary/v1" xmlns:tns="http://www.ericsson.com/ESO/Error/v1" elementFormDefault="qualified" targetNamespace="http://www.ericsson.com/ESO/Error/v1">
+      <xsd:import namespace="http://www.ericsson.com/EDD/Dictionary/v1"/>
+      <xsd:complexType name="Canonical_Error_Type">
+        <xsd:complexContent>
+          <xsd:extension base="tns:ErrorMetadata_Type">
+            <xsd:attribute form="unqualified" name="type" type="tns:CanonicalErrorType_SType"/>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="CanonicalError" type="tns:Canonical_Error_Type"/>
+      <xsd:simpleType name="CanonicalErrorType_SType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="NEG"/>
+          <xsd:enumeration value="DAT"/>
+          <xsd:enumeration value="TEC"/>
+          <xsd:enumeration value="UNK"/>
+          <xsd:enumeration value="SEG"/>
+          <xsd:enumeration value="FWNE"/>
+          <xsd:enumeration value="FWDA"/>
+          <xsd:enumeration value="FWTE"/>
+          <xsd:enumeration value="FWUN"/>
+          <xsd:enumeration value="FWSE"/>
+          <xsd:enumeration value="FWCF"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ErrorMetadata_Type">
+        <xsd:attribute form="unqualified" name="code" type="eddns_dictionary:genericStringValue_SType"/>
+        <xsd:attribute form="unqualified" name="description" type="eddns_dictionary:genericStringValue_SType"/>
+      </xsd:complexType>
+      <xsd:element name="ErrorMetadata" type="tns:ErrorMetadata_Type"/>
+      <xsd:complexType name="ErrorSourceDetails_Type">
+        <xsd:attribute form="unqualified" name="source" type="eddns_dictionary:sysCode_SType"/>
+        <xsd:attribute form="unqualified" name="details" type="eddns_dictionary:genericStringValue_SType"/>
+      </xsd:complexType>
+      <xsd:element name="ErrorSourceDetails" type="tns:ErrorSourceDetails_Type"/>
+      <xsd:complexType name="SourceError_Type">
+        <xsd:complexContent>
+          <xsd:extension base="tns:ErrorMetadata_Type">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" ref="tns:ErrorSourceDetails"/>
+              <xsd:element minOccurs="0" name="SourceFault" type="xsd:anyType"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="SourceError" type="tns:SourceError_Type"/>
+      <xsd:element name="ErrorIndex" type="eddns_dictionary:SimpleIndexDetail_Type"/>
+    </xsd:schema>
+    <xsd:schema xmlns:Q1="http://www.ericsson.com/tibco/schema/HeaderMessage" xmlns:Q2="http://www.ericsson.com/ESO/MessageHeader/v1" xmlns:Q3="http://www.ericsson.com/EBO/Requester/v1" xmlns:tns="http://www.ericsson.com/tibco/schema/ManageSubscriptionPO" elementFormDefault="qualified" targetNamespace="http://www.ericsson.com/tibco/schema/ManageSubscriptionPO">
+      <xsd:import namespace="http://www.ericsson.com/ESO/Error/v1"/>
+      <xsd:import namespace="http://www.ericsson.com/ESO/MessageHeader/v1"/>
+      <xsd:import namespace="http://www.ericsson.com/ESO/Result/v2"/>
+      <xsd:import namespace="http://www.ericsson.com/ESO/Tracer/v1"/>
+      <xsd:element name="ManageSubscriptionPO_REQ">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="Q2:RequestHeader"/>
+            <xsd:element name="Body">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="SubscriptionPO">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element maxOccurs="1" minOccurs="1" name="MSISDN" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="1" name="autoSubmit" type="xsd:boolean"/>
+                        <xsd:element maxOccurs="1" minOccurs="1" name="externalChannel" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="1" name="externalOrderID" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="0" name="eventID" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="0" name="campaignID" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="1" name="OrderItemList">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element maxOccurs="unbounded" minOccurs="1" name="OrderItem">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element maxOccurs="1" minOccurs="1" name="poId" type="xsd:string"/>
+                                    <xsd:element maxOccurs="1" minOccurs="1" name="action" type="xsd:string"/>
+                                    <xsd:element maxOccurs="1" minOccurs="0" name="ValueList">
+                                      <xsd:complexType>
+                                        <xsd:sequence>
+                                          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ValueChar">
+                                            <xsd:complexType>
+                                              <xsd:sequence>
+                                                <xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string"/>
+                                                <xsd:element maxOccurs="1" minOccurs="1" name="Values">
+                                                  <xsd:complexType>
+                                                    <xsd:sequence>
+                                                      <xsd:element maxOccurs="1" minOccurs="1" name="Value">
+                                                        <xsd:complexType>
+                                                          <xsd:sequence>
+                                                            <xsd:element maxOccurs="1" minOccurs="1" name="value" type="xsd:string"/>
+                                                            <xsd:element maxOccurs="1" minOccurs="1" name="action" type="xsd:string"/>
+                                                          </xsd:sequence>
+                                                        </xsd:complexType>
+                                                      </xsd:element>
+                                                    </xsd:sequence>
+                                                  </xsd:complexType>
+                                                </xsd:element>
+                                              </xsd:sequence>
+                                            </xsd:complexType>
+                                          </xsd:element>
+                                        </xsd:sequence>
+                                      </xsd:complexType>
+                                    </xsd:element>
+                                  </xsd:sequence>
+                                </xsd:complexType>
+                              </xsd:element>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ManageSubscriptionPO_RSP">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="Q2:ResponseHeader"/>
+            <xsd:element minOccurs="0" name="Body">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" minOccurs="0" name="SubscriptionPO">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element maxOccurs="1" minOccurs="0" name="MSISDN" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="0" name="orderID" type="xsd:string"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema xmlns:tns="http://www.ericsson.com/EDD/Dictionary/v1" elementFormDefault="qualified" targetNamespace="http://www.ericsson.com/EDD/Dictionary/v1">
+      <xsd:complexType name="SimpleIndexDetail_Type">
+        <xsd:attribute form="unqualified" name="module" type="tns:genericStringValue_SType" use="required"/>
+        <xsd:attribute form="unqualified" name="subModule" type="tns:genericStringValue_SType"/>
+      </xsd:complexType>
+      <xsd:complexType name="SimpleEventPlaceHolderDetail_Type">
+        <xsd:attribute form="unqualified" name="time" type="tns:messageTimeStamp_SType" use="required"/>
+        <xsd:attribute form="unqualified" name="place" type="tns:genericStringValue_SType" use="required"/>
+      </xsd:complexType>
+      <xsd:complexType name="StringDataMap_Type">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Item" type="tns:StringDataMapItem_Type"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StringDataMapItem_Type">
+        <xsd:attribute form="unqualified" name="key" type="tns:genericStringValue_SType" use="required"/>
+        <xsd:attribute form="unqualified" name="value" type="tns:genericStringValue_SType" use="required"/>
+      </xsd:complexType>
+      <xsd:complexType name="GenericDataMap_Type">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="Item" type="tns:GenericDataMapItem_Type"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GenericDataMapItem_Type">
+        <xsd:sequence>
+          <xsd:element name="Value" type="xsd:anyType"/>
+        </xsd:sequence>
+        <xsd:attribute form="unqualified" name="key" type="tns:genericStringValue_SType"/>
+      </xsd:complexType>
+      <xsd:simpleType name="messageTimeStamp_SType">
+        <xsd:restriction base="xsd:dateTime">
+          <xsd:pattern value="[0-9]{4}-[01][0-9]-[0-3][0-9]T[0-2][0-9]:[0-5][0-9]:[0-6][0-9].*[0-9]*[0-9]*[0-9]*(Z|((\+|-)([0-1][0-2]|[0-0][0-9]):[0-0][0-0]))"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="sysCode_SType">
+        <xsd:restriction base="xsd:string"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="countryCode_SType">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="3"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="alphaCode_SType">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="3"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="sysName_SType">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="10"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="genericStringValue_SType">
+        <xsd:restriction base="xsd:string"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="age_SType">
+        <xsd:restriction base="xsd:int"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="id_SType">
+        <xsd:restriction base="xsd:int"/>
+      </xsd:simpleType>
+      <xsd:simpleType name="status_SType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="OK"/>
+          <xsd:enumeration value="ERROR"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="timeout_SType">
+        <xsd:restriction base="xsd:int"/>
+      </xsd:simpleType>
+      <xsd:complexType name="Credentials_Type">
+        <xsd:attribute form="unqualified" name="user" type="xsd:string"/>
+        <xsd:attribute form="unqualified" name="password" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:complexType name="CacheKey_Type">
+        <xsd:attribute form="unqualified" name="source" type="xsd:string"/>
+        <xsd:attribute form="unqualified" name="category" type="xsd:string"/>
+        <xsd:attribute form="unqualified" name="instance" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:complexType name="TimePeriod">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="endDateTime" type="xsd:dateTime"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="startDateTime" type="xsd:dateTime"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Money">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="amount" type="xsd:float"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="units" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:eddns_dictionary="http://www.ericsson.com/EDD/Dictionary/v1" xmlns:esons_error="http://www.ericsson.com/ESO/Error/v1" xmlns:tns="http://www.ericsson.com/ESO/Result/v2" elementFormDefault="qualified" targetNamespace="http://www.ericsson.com/ESO/Result/v2">
+      <xsd:import namespace="http://www.ericsson.com/ESO/Error/v1"/>
+      <xsd:import namespace="http://www.ericsson.com/EDD/Dictionary/v1"/>
+      <xsd:complexType name="Result_Type">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="esons_error:CanonicalError"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="esons_error:SourceError"/>
+          <xsd:element minOccurs="0" name="CorrelativeErrors">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" ref="esons_error:SourceError"/>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute form="unqualified" name="status" type="tns:resultStatus_SType"/>
+        <xsd:attribute form="unqualified" name="description" type="eddns_dictionary:genericStringValue_SType"/>
+      </xsd:complexType>
+      <xsd:simpleType name="resultStatus_SType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="OK"/>
+          <xsd:enumeration value="WARNING"/>
+          <xsd:enumeration value="ERROR"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="Result" type="tns:Result_Type"/>
+    </xsd:schema>
+    <xsd:schema xmlns:eddns_dictionary="http://www.ericsson.com/EDD/Dictionary/v1" xmlns:esons_error="http://www.ericsson.com/ESO/Error/v1" xmlns:esons_result="http://www.ericsson.com/ESO/Result/v2" xmlns:pref="http://www.ericsson.com/ESO/Tracer/v1" xmlns:tns="http://www.ericsson.com/ESO/MessageHeader/v1" elementFormDefault="qualified" targetNamespace="http://www.ericsson.com/ESO/MessageHeader/v1">
+      <xsd:import namespace="http://www.ericsson.com/EDD/Dictionary/v1"/>
+      <xsd:import namespace="http://www.ericsson.com/ESO/Result/v2"/>
+      <xsd:import namespace="http://www.ericsson.com/ESO/Error/v1"/>
+      <xsd:import namespace="http://www.ericsson.com/ESO/Tracer/v1"/>
+      <xsd:complexType name="MessageHeader_Type">
+        <xsd:sequence>
+          <xsd:element ref="tns:Consumer"/>
+          <xsd:element ref="tns:Trace"/>
+          <xsd:element minOccurs="0" ref="tns:Channel"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Consumer_Type">
+        <xsd:attribute form="unqualified" name="sysCode" type="eddns_dictionary:sysCode_SType" use="required"/>
+        <xsd:attribute form="unqualified" name="enterpriseCode" type="eddns_dictionary:sysCode_SType" use="required"/>
+        <xsd:attribute form="unqualified" name="countryCode" type="eddns_dictionary:countryCode_SType" use="required"/>
+      </xsd:complexType>
+      <xsd:complexType name="Trace_Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="tns:Service"/>
+        </xsd:sequence>
+        <xsd:attribute form="unqualified" name="clientReqTimestamp" type="eddns_dictionary:messageTimeStamp_SType"/>
+        <xsd:attribute form="unqualified" name="reqTimestamp" type="eddns_dictionary:messageTimeStamp_SType"/>
+        <xsd:attribute form="unqualified" name="rspTimestamp" type="eddns_dictionary:messageTimeStamp_SType"/>
+        <xsd:attribute form="unqualified" name="processID" type="eddns_dictionary:genericStringValue_SType"/>
+        <xsd:attribute form="unqualified" name="eventID" type="eddns_dictionary:genericStringValue_SType"/>
+        <xsd:attribute form="unqualified" name="sourceID" type="eddns_dictionary:genericStringValue_SType"/>
+        <xsd:attribute form="unqualified" name="correlationEventID" type="eddns_dictionary:genericStringValue_SType"/>
+        <xsd:attribute form="unqualified" name="conversationID" type="tns:conversationID_SType"/>
+        <xsd:attribute form="unqualified" name="correlationID" type="tns:conversationID_SType"/>
+      </xsd:complexType>
+      <xsd:simpleType name="conversationID_SType">
+        <xsd:restriction base="xsd:string"/>
+      </xsd:simpleType>
+      <xsd:complexType name="Channel_Type">
+        <xsd:attribute form="unqualified" name="name">
+          <xsd:simpleType>
+            <xsd:restriction base="eddns_dictionary:genericStringValue_SType"/>
+          </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute form="unqualified" name="mode">
+          <xsd:simpleType>
+            <xsd:restriction base="eddns_dictionary:genericStringValue_SType"/>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:complexType>
+      <xsd:complexType name="Country_Type">
+        <xsd:attribute form="unqualified" name="code" type="xsd:int" use="required"/>
+        <xsd:attribute form="unqualified" name="name" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:complexType name="Service_Type">
+        <xsd:attribute form="unqualified" name="code" type="xsd:string"/>
+        <xsd:attribute form="unqualified" name="name" type="xsd:string"/>
+        <xsd:attribute form="unqualified" name="operation" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:complexType name="RequestHeader_Type">
+        <xsd:complexContent>
+          <xsd:extension base="tns:MessageHeader_Type">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" ref="esons_result:Result"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ResponseHeader_Type">
+        <xsd:complexContent>
+          <xsd:extension base="tns:MessageHeader_Type">
+            <xsd:sequence>
+              <xsd:element ref="esons_result:Result"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="RequestHeader" type="tns:RequestHeader_Type"/>
+      <xsd:element name="ResponseHeader" type="tns:ResponseHeader_Type"/>
+      <xsd:element name="Service" type="tns:Service_Type"/>
+      <xsd:element name="Consumer" type="tns:Consumer_Type"/>
+      <xsd:element name="Channel" type="tns:Channel_Type"/>
+      <xsd:element name="Trace" type="tns:Trace_Type"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ManageSubscriptionPoRequest">
+    <wsdl:part element="ns01:ManageSubscriptionPO_REQ" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="ManageSubscriptionPoResponse">
+    <wsdl:part element="ns01:ManageSubscriptionPO_RSP" name="response"/>
+  </wsdl:message>
+  <wsdl:portType name="ManageSubscriptionPO">
+    <wsdl:operation name="ManageSubscriptionPo">
+      <wsdl:input message="ns:ManageSubscriptionPoRequest"/>
+      <wsdl:output message="ns:ManageSubscriptionPoResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SOAPServiceBinding" type="ns:ManageSubscriptionPO">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ManageSubscriptionPo">
+      <soap:operation soapAction="ManageSubscriptionPo" style="document"/>
+      <wsdl:input>
+        <soap:body parts="request" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="response" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ManageSubscriptionPO">
+    <wsdl:port binding="ns:SOAPServiceBinding" name="ManageSubscriptionPOSOAP">
+      <soap:address location="http://localhost:30055/TIBCO/ManageSubscriptionPO/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

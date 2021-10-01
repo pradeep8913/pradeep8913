@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions name="tibco.generalServices" targetNamespace="tibco.generalServices"
+	xmlns:tns="tibco.generalServices"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tibco.generalServices.getOrderByStatus="urn:getOrderByStatus"
+	xmlns:tibco.generalServices.updateOrderSerialNumbers="urn:updateOrderSerialNumbers"
+	xmlns:tibco.generalServices.getScenarioData="urn:getScenarioDataService"
+	xmlns:tibco.generalServices.getPenalty="urn:getPenalty_Service"
+	xmlns:tibco.generalServices.getOrderMaterialNumbers="urn:getOrderMaterialNumbers"
+	xmlns:tibco.generalServices.getCounters="urn:getCounters_service">
+
+	<types>
+		<schema elementFormDefault="qualified" targetNamespace="urn:getOrderByStatus"			
+	xmlns="http://www.w3.org/2001/XMLSchema"			
+	xmlns:tibco.generalServices.getOrderByStatus="urn:getOrderByStatus"			
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+
+			<annotation>
+				<documentation>INT_342_A-GetOrderByStatus</documentation>
+				<appinfo>
+					<metadata>DTC Lab 3.2 CBiO8 -17.0 GA</metadata>
+					<created>Mon Jan 11 11:42:57 IST 2016</created>
+				</appinfo>
+			</annotation>
+
+			<!-- Data types and elements -->
+
+			<!-- Structures -->
+
+			<element name="getOrderByStatusResponse">
+				<complexType >
+				<annotation>
+					<documentation>getOrderByStatusResponse</documentation>
+				</annotation>
+					<sequence>
+						<element name="result" minOccurs="1" maxOccurs="1">
+							<annotation>
+								<documentation>result</documentation>
+							</annotation>
+							<complexType>
+								<sequence>
+									<element name="code" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+									<element name="description" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+									<element name="orders" minOccurs="0" maxOccurs="1">
+										<annotation>
+											<documentation>orders</documentation>
+										</annotation>
+										<complexType>
+											<sequence>
+												<element name="order" minOccurs="1" maxOccurs="unbounded">
+													<annotation>
+														<documentation>order</documentation>
+													</annotation>
+													<complexType>
+														<sequence>
+															<element name="orderId" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+															<element name="orderType" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+															<element name="orderStatus" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+															<element name="orderCreatedDate" minOccurs="0" maxOccurs="1" type="xsd:dateTime"/>
+															<element name="createdBy" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+															<element name="orderStartDate" minOccurs="0" maxOccurs="1" type="xsd:dateTime"/>
+															<element name="orderCompletionDate" minOccurs="0" maxOccurs="1" type="xsd:dateTime"/>
+															<element name="channel" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+															<element name="MSISDN" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+															<element name="billingAccountId" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+															<element name="attrs" minOccurs="0" maxOccurs="unbounded">
+																<annotation>
+																	<documentation>attrs</documentation>
+																</annotation>
+																<complexType>
+																	<sequence>
+																		<element name="name" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+																		<element name="value" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+																	</sequence>
+																</complexType>
+															</element>
+														</sequence>
+													</complexType>
+												</element>
+											</sequence>
+										</complexType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+
+			<element name="getOrderByStatusRequest">
+				<complexType >
+				<annotation>
+					<documentation>getOrderByStatusRequest</documentation>
+				</annotation>
+					<sequence>
+						<element name="transactionId" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+						<element name="customerId" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+						<element name="orderId" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+						<element name="MSISDN" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+						<element name="TCRMShippingActivityId" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+						<element name="contractId" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+						<element name="state" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+						<element name="openOrders" minOccurs="0" maxOccurs="1" type="xsd:boolean"/>
+						<element name="orderStartDate" minOccurs="0" maxOccurs="1" type="xsd:dateTime"/>
+						<element name="orderCompletionDate" minOccurs="0" maxOccurs="1" type="xsd:dateTime"/>
+						<element name="preorderFlag" minOccurs="0" maxOccurs="1" type="xsd:boolean"/>
+					</sequence>
+				</complexType>
+			</element>
+
+			<!-- Documents -->
+
+		</schema>
+		<schema elementFormDefault="qualified" targetNamespace="urn:updateOrderSerialNumbers"			
+	xmlns="http://www.w3.org/2001/XMLSchema"			
+	xmlns:tibco.generalServices.updateOrderSerialNumbers="urn:updateOrderSerialNumbers"			
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"			
+	xmlns:tibco.generalServices="tibco.generalServices">
+
+
+
+			<annotation>
+				<documentation>INT_326_E-UpdateOrderSerialNumber</documentation>
+				<appinfo>
+					<metadata>DTC Lab 3.2 CBiO8 -17.0 GA</metadata>
+					<created>Mon Jan 11 11:42:57 IST 2016</created>
+				</appinfo>
+			</annotation>
+
+			<!-- Data types and elements -->
+
+			<!-- Structures -->
+
+			<element name="serialNumbersRequest">
+				<complexType >
+				<annotation>
+					<documentation>serialNumbersRequest</documentation>
+				</annotation>
+					<sequence>
+						<element name="orderId" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+						<element name="csrId" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+						<element name="processId" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+						<element name="msisdn" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+						<element name="products" minOccurs="1" maxOccurs="1">
+							<annotation>
+								<documentation>products</documentation>
+							</annotation>
+							<complexType>
+								<sequence>
+									<element name="product" minOccurs="1" maxOccurs="unbounded">
+										<annotation>
+											<documentation>product</documentation>
+										</annotation>
+										<complexType>
+											<sequence>
+												<element name="itemId" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+												<element name="serialNumber" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+												<element name="isChild" minOccurs="0" maxOccurs="1" type="xsd:boolean"/>
+											</sequence>
+										</complexType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+
+			<element name="serialNumbersResponse">
+				<complexType >
+				<annotation>
+					<documentation>serialNumbersResponse</documentation>
+				</annotation>
+					<sequence>
+						<element name="result" minOccurs="1" maxOccurs="1" type="tibco.generalServices:result"/>
+						<element name="error" minOccurs="0" maxOccurs="1">
+							<annotation>
+								<documentation>error</documentation>
+							</annotation>
+							<complexType>
+								<sequence>
+									<element name="code" minOccurs="0" maxOccurs="1" type="tibco.generalServices:code"/>
+									<element name="description" minOccurs="0" maxOccurs="1" type="tibco.generalServices:description"/>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+
+			<!-- Documents -->
+
+		</schema>
+		<schema targetNamespace="tibco.generalServices"			
+	xmlns="http://www.w3.org/2001/XMLSchema"			
+	xmlns:tibco.generalServices="tibco.generalServices"			
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+
+			<annotation>
+				<documentation>INT_326_A-D-EOC-generalServices</documentation>
+				<appinfo>
+					<metadata>DTC Lab 3.2 CBiO8 -17.0 GA</metadata>
+					<created>Mon Jan 11 11:42:57 IST 2016</created>
+				</appinfo>
+			</annotation>
+
+			<!-- Data types and elements -->
+
+			<simpleType name="code">
+				<annotation>
+					<documentation>code</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="50"/>
+				</restriction>
+			</simpleType>
+
+			<simpleType name="description">
+				<annotation>
+					<documentation>description</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="200"/>
+				</restriction>
+			</simpleType>
+
+			<simpleType name="result">
+				<annotation>
+					<documentation>result</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="500"/>
+				</restriction>
+			</simpleType>
+
+			<!-- Structures -->
+
+			<!-- Documents -->
+
+		</schema>
+		<schema elementFormDefault="qualified" targetNamespace="urn:getScenarioDataService"			
+	xmlns="http://www.w3.org/2001/XMLSchema"			
+	xmlns:tibco.generalServices.getScenarioData="urn:getScenarioDataService"			
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+
+			<annotation>
+				<documentation>INT_326_B-getScenarioData-OBSS-1454</documentation>
+				<appinfo>
+					<metadata>DTC Lab 3.2 CBiO8 -17.0 GA</metadata>
+					<created>Mon Jan 11 11:42:57 IST 2016</created>
+				</appinfo>
+			</annotation>
+
+			<!-- Data types and elements -->
+
+			<simpleType name="code">
+				<annotation>
+					<documentation>code</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="50"/>
+				</restriction>
+			</simpleType>
+
+			<simpleType name="data">
+				<annotation>
+					<documentation>data</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="512"/>
+				</restriction>
+			</simpleType>
+
+			<simpleType name="description">
+				<annotation>
+					<documentation>description</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="512"/>
+				</restriction>
+			</simpleType>
+
+			<simpleType name="transactionId">
+				<annotation>
+					<documentation>transactionId</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+				</restriction>
+			</simpleType>
+
+			<simpleType name="scenario">
+				<annotation>
+					<documentation>scenario</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+				</restriction>
+			</simpleType>
+
+			<simpleType name="PO_ID">
+				<annotation>
+					<documentation>PO_ID</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="128"/>
+				</restriction>
+			</simpleType>
+
+			<simpleType name="customerId">
+				<annotation>
+					<documentation>customerId</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="32"/>
+				</restriction>
+			</simpleType>
+
+			<simpleType name="contractId">
+				<annotation>
+					<documentation>contractId</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="32"/>
+				</restriction>
+			</simpleType>
+
+			<simpleType name="name">
+				<annotation>
+					<documentation>name</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="128"/>
+				</restriction>
+			</simpleType>
+
+			<simpleType name="msisdn">
+				<annotation>
+					<documentation>msisdn</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="20"/>
+				</restriction>
+			</simpleType>
+
+			<simpleType name="value">
+				<annotation>
+					<documentation>value</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="256"/>
+				</restriction>
+			</simpleType>
+
+			<!-- Structures -->
+
+			<complexType name="scenarioParam">
+				<annotation>
+					<documentation>scenarioParam</documentation>
+				</annotation>
+					<sequence>
+						<element name="name" minOccurs="1" maxOccurs="1" type="tibco.generalServices.getScenarioData:name"/>
+						<element name="value" minOccurs="1" maxOccurs="1" type="tibco.generalServices.getScenarioData:value"/>
+					</sequence>
+				</complexType>
+
+			<element name="getScenarioDataRequest">
+				<complexType >
+				<annotation>
+					<documentation>getScenarioDataRequest</documentation>
+				</annotation>
+					<sequence>
+						<element name="transactionId" minOccurs="1" maxOccurs="1" type="tibco.generalServices.getScenarioData:transactionId"/>
+						<element name="scenario" minOccurs="1" maxOccurs="1" type="tibco.generalServices.getScenarioData:scenario"/>
+						<element name="customerId" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getScenarioData:customerId"/>
+						<element name="msisdn" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getScenarioData:msisdn"/>
+						<element name="contractId" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+						<element name="scenarioInputParameters" minOccurs="1" maxOccurs="1" type="tibco.generalServices.getScenarioData:scenarioInputParameters"/>
+					</sequence>
+				</complexType>
+			</element>
+
+			<complexType name="result">
+				<annotation>
+					<documentation>result</documentation>
+				</annotation>
+					<sequence>
+						<element name="data" minOccurs="1" maxOccurs="1" type="tibco.generalServices.getScenarioData:data"/>
+						<element name="code" minOccurs="1" maxOccurs="1" type="tibco.generalServices.getScenarioData:code"/>
+						<element name="description" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getScenarioData:description"/>
+					</sequence>
+				</complexType>
+
+			<complexType name="scenarioInputParameters">
+				<annotation>
+					<documentation>scenarioInputParameters</documentation>
+				</annotation>
+					<sequence>
+						<element name="scenarioParam" minOccurs="0" maxOccurs="unbounded" type="tibco.generalServices.getScenarioData:scenarioParam"/>
+					</sequence>
+				</complexType>
+
+			<element name="getScenarioDataResponse">
+				<complexType >
+				<annotation>
+					<documentation>getScenarioDataResponse</documentation>
+				</annotation>
+					<sequence>
+						<element name="customerId" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getScenarioData:customerId"/>
+						<element name="msisdn" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getScenarioData:msisdn"/>
+						<element name="contractId" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getScenarioData:contractId"/>
+						<element name="result" minOccurs="1" maxOccurs="1" type="tibco.generalServices.getScenarioData:result"/>
+					</sequence>
+				</complexType>
+			</element>
+
+			<!-- Documents -->
+
+			<complexType name="scenarioDataSearchDoc">
+				<annotation>
+					<documentation>scenarioDataSearchDoc</documentation>
+				</annotation>
+					<sequence>
+						<element name="contractId" type="tibco.generalServices.getScenarioData:customerId"/>
+						<element name="PO_ID" type="tibco.generalServices.getScenarioData:PO_ID"/>
+					</sequence>
+				</complexType>
+
+			<complexType name="scenarioDataDoc">
+				<annotation>
+					<documentation>scenarioDataDoc</documentation>
+				</annotation>
+					<sequence>
+						<element name="data" type="tibco.generalServices.getScenarioData:data"/>
+					</sequence>
+				</complexType>
+
+		</schema>
+		<schema elementFormDefault="qualified" targetNamespace="urn:getPenalty_Service"			
+	xmlns="http://www.w3.org/2001/XMLSchema"			
+	xmlns:tibco.generalServices.getPenalty="urn:getPenalty_Service"			
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+
+			<annotation>
+				<documentation>INT_326_C-GetPenalty</documentation>
+				<appinfo>
+					<metadata>DTC Lab 3.2 CBiO8 -17.0 GA</metadata>
+					<created>Mon Jan 11 11:42:57 IST 2016</created>
+				</appinfo>
+			</annotation>
+
+			<!-- Data types and elements -->
+
+			<!-- Structures -->
+
+			<complexType name="result">
+				<annotation>
+					<documentation>result</documentation>
+				</annotation>
+					<sequence>
+						<element name="code" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+						<element name="description" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+						<element name="totalPenalty" minOccurs="1" maxOccurs="1" type="xsd:integer"/>
+						<element name="currency" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+						<element name="listOfPO" minOccurs="0" maxOccurs="unbounded">
+							<annotation>
+								<documentation>listOfPO</documentation>
+							</annotation>
+							<complexType>
+								<sequence>
+									<element name="POID" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+									<element name="productID" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+									<element name="penalty" minOccurs="1" maxOccurs="1" type="xsd:integer"/>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+
+			<complexType name="listOfPO">
+				<annotation>
+					<documentation>listOfPO</documentation>
+				</annotation>
+					<sequence>
+						<element name="POID" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+						<element name="productID" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+					</sequence>
+				</complexType>
+
+			<element name="getPenaltyResponse">
+				<complexType >
+				<annotation>
+					<documentation>getPenaltyResponse</documentation>
+				</annotation>
+					<sequence>
+						<element name="result" minOccurs="1" maxOccurs="1" type="tibco.generalServices.getPenalty:result"/>
+					</sequence>
+				</complexType>
+			</element>
+
+			<element name="getPenaltyRequest">
+				<complexType >
+				<annotation>
+					<documentation>getPenaltyRequest</documentation>
+				</annotation>
+					<sequence>
+						<element name="transactionId" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+						<element name="customerId" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+						<element name="contractId" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+						<element name="date" minOccurs="1" maxOccurs="1" type="xsd:dateTime"/>
+						<element name="listOfPO" minOccurs="0" maxOccurs="unbounded" type="tibco.generalServices.getPenalty:listOfPO"/>
+					</sequence>
+				</complexType>
+			</element>
+
+			<!-- Documents -->
+
+		</schema>
+		<schema elementFormDefault="qualified" targetNamespace="urn:getOrderMaterialNumbers"			
+	xmlns="http://www.w3.org/2001/XMLSchema"			
+	xmlns:tibco.generalServices.getOrderMaterialNumbers="urn:getOrderMaterialNumbers"			
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"			
+	xmlns:tibco.generalServices="tibco.generalServices">
+
+
+
+			<annotation>
+				<documentation>INT_326_D-GetOrderMaterialNumbers</documentation>
+				<appinfo>
+					<metadata>DTC Lab 3.2 CBiO8 -17.0 GA</metadata>
+					<created>Mon Jan 11 11:42:57 IST 2016</created>
+				</appinfo>
+			</annotation>
+
+			<!-- Data types and elements -->
+
+			<!-- Structures -->
+
+			<element name="getOrderMaterialNumbersRequest">
+				<complexType >
+				<annotation>
+					<documentation>getOrderMaterialNumbersRequest</documentation>
+				</annotation>
+					<sequence>
+						<element name="orderId" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+						<element name="processId" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+					</sequence>
+				</complexType>
+			</element>
+
+			<element name="getOrderMaterialNumbersResponse">
+				<complexType >
+				<annotation>
+					<documentation>getOrderMaterialNumbersResponse</documentation>
+				</annotation>
+					<sequence>
+						<element name="result" minOccurs="1" maxOccurs="1" type="tibco.generalServices:result"/>
+						<element name="products" minOccurs="0" maxOccurs="1">
+							<annotation>
+								<documentation>products</documentation>
+							</annotation>
+							<complexType>
+								<sequence>
+									<element name="product" minOccurs="0" maxOccurs="unbounded">
+										<annotation>
+											<documentation>product</documentation>
+										</annotation>
+										<complexType>
+											<sequence>
+												<element name="itemId" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+												<element name="materialNumber" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+												<element name="isChild" minOccurs="0" maxOccurs="1" type="xsd:boolean"/>
+											</sequence>
+										</complexType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="error" minOccurs="0" maxOccurs="1">
+							<annotation>
+								<documentation>error</documentation>
+							</annotation>
+							<complexType>
+								<sequence>
+									<element name="code" minOccurs="0" maxOccurs="1" type="tibco.generalServices:code"/>
+									<element name="description" minOccurs="0" maxOccurs="1" type="tibco.generalServices:description"/>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+
+			<!-- Documents -->
+
+		</schema>
+		<schema elementFormDefault="qualified" targetNamespace="urn:getCounters_service"			
+	xmlns="http://www.w3.org/2001/XMLSchema"			
+	xmlns:tibco.generalServices.getCounters="urn:getCounters_service"			
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+
+			<annotation>
+				<documentation>INT_326_A-GetEventCounter-OBSS-999</documentation>
+				<appinfo>
+					<metadata>DTC Lab 3.2 CBiO8 -17.0 GA</metadata>
+					<created>Mon Jan 11 11:42:57 IST 2016</created>
+				</appinfo>
+			</annotation>
+
+			<!-- Data types and elements -->
+
+			<simpleType name="date">
+				<annotation>
+					<documentation>date</documentation>
+				</annotation>
+				<restriction base="xsd:dateTime">
+				</restriction>
+			</simpleType>
+
+			<simpleType name="MSISDN">
+				<annotation>
+					<documentation>MSISDN</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="32"/>
+				</restriction>
+			</simpleType>
+
+			<simpleType name="PO_ID">
+				<annotation>
+					<documentation>PO_ID</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="100"/>
+				</restriction>
+			</simpleType>
+
+			<simpleType name="Event">
+				<annotation>
+					<documentation>Event</documentation>
+				</annotation>
+				<restriction base="xsd:string">
+					<maxLength value="100"/>
+				</restriction>
+			</simpleType>
+
+			<!-- Structures -->
+
+			<element name="counterResponse">
+				<complexType >
+				<annotation>
+					<documentation>counterResponse</documentation>
+				</annotation>
+					<sequence>
+						<element name="result" minOccurs="1" maxOccurs="1">
+							<annotation>
+								<documentation>result</documentation>
+							</annotation>
+							<complexType>
+								<sequence>
+									<element name="code" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+									<element name="description" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+									<element name="counterList" minOccurs="1" maxOccurs="unbounded">
+										<annotation>
+											<documentation>counterList</documentation>
+										</annotation>
+										<complexType>
+											<sequence>
+												<element name="Counter" minOccurs="1" maxOccurs="1" type="xsd:integer"/>
+												<element name="MSISDN" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getCounters:MSISDN"/>
+												<element name="PO_ID" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getCounters:PO_ID"/>
+												<element name="Event" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getCounters:Event"/>
+											</sequence>
+										</complexType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+
+			<element name="counterRequest">
+				<complexType >
+				<annotation>
+					<documentation>counterRequest</documentation>
+				</annotation>
+					<sequence>
+						<element name="transactionId" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+						<element name="CustomerId" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+						<element name="MSISDN" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getCounters:MSISDN"/>
+						<element name="PO_ID" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getCounters:PO_ID"/>
+						<element name="Event" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getCounters:Event"/>
+						<element name="StartDateTime" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getCounters:date"/>
+						<element name="EndDateTime" minOccurs="0" maxOccurs="1" type="tibco.generalServices.getCounters:date"/>
+					</sequence>
+				</complexType>
+			</element>
+
+			<!-- Documents -->
+
+		</schema>
+	</types>
+
+	<message name="counterRequest">
+		<part name="counterRequest" element="tibco.generalServices.getCounters:counterRequest"/>
+	</message>
+
+	<message name="counterResponse">
+		<part name="counterResponse" element="tibco.generalServices.getCounters:counterResponse"/>
+	</message>
+
+	<message name="getOrderMaterialNumbersRequest">
+		<part name="getOrderMaterialNumbersRequest" element="tibco.generalServices.getOrderMaterialNumbers:getOrderMaterialNumbersRequest"/>
+	</message>
+
+	<message name="getOrderMaterialNumbersResponse">
+		<part name="getOrderMaterialNumbersResponse" element="tibco.generalServices.getOrderMaterialNumbers:getOrderMaterialNumbersResponse"/>
+	</message>
+
+	<message name="getPenaltyRequest">
+		<part name="getPenaltyRequest" element="tibco.generalServices.getPenalty:getPenaltyRequest"/>
+	</message>
+
+	<message name="getPenaltyResponse">
+		<part name="getPenaltyResponse" element="tibco.generalServices.getPenalty:getPenaltyResponse"/>
+	</message>
+
+	<message name="getScenarioDataRequest">
+		<part name="getScenarioDataRequest" element="tibco.generalServices.getScenarioData:getScenarioDataRequest"/>
+	</message>
+
+	<message name="getScenarioDataResponse">
+		<part name="getScenarioDataResponse" element="tibco.generalServices.getScenarioData:getScenarioDataResponse"/>
+	</message>
+
+	<message name="serialNumbersRequest">
+		<part name="serialNumbersRequest" element="tibco.generalServices.updateOrderSerialNumbers:serialNumbersRequest"/>
+	</message>
+
+	<message name="serialNumbersResponse">
+		<part name="serialNumbersResponse" element="tibco.generalServices.updateOrderSerialNumbers:serialNumbersResponse"/>
+	</message>
+
+	<message name="getOrderByStatusRequest">
+		<part name="getOrderByStatusRequest" element="tibco.generalServices.getOrderByStatus:getOrderByStatusRequest"/>
+	</message>
+
+	<message name="getOrderByStatusResponse">
+		<part name="getOrderByStatusResponse" element="tibco.generalServices.getOrderByStatus:getOrderByStatusResponse"/>
+	</message>
+
+	<portType name="generalServices">
+		<operation name="getEventCounters">
+			<input message="tns:counterRequest"/>
+			<output message="tns:counterResponse"/>
+		</operation>
+		<operation name="getOrderMaterialNumbers">
+			<input message="tns:getOrderMaterialNumbersRequest"/>
+			<output message="tns:getOrderMaterialNumbersResponse"/>
+		</operation>
+		<operation name="getPenalty">
+			<input message="tns:getPenaltyRequest"/>
+			<output message="tns:getPenaltyResponse"/>
+		</operation>
+		<operation name="getScenarioData">
+			<input message="tns:getScenarioDataRequest"/>
+			<output message="tns:getScenarioDataResponse"/>
+		</operation>
+		<operation name="updateOrderSerialNumbers">
+			<input message="tns:serialNumbersRequest"/>
+			<output message="tns:serialNumbersResponse"/>
+		</operation>
+		<operation name="getOrderByStatus">
+			<input message="tns:getOrderByStatusRequest"/>
+			<output message="tns:getOrderByStatusResponse"/>
+		</operation>
+	</portType>
+
+	<binding name="generalServices_SOAP" type="tns:generalServices">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="getEventCounters">
+			<soap:operation soapAction="getEventCounters"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="getOrderMaterialNumbers">
+			<soap:operation soapAction="getOrderMaterialNumbers"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="getPenalty">
+			<soap:operation soapAction="getPenalty"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="getScenarioData">
+			<soap:operation soapAction="getScenarioData"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="updateOrderSerialNumbers">
+			<soap:operation soapAction="updateOrderSerialNumbers"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="getOrderByStatus">
+			<soap:operation soapAction="getOrderByStatus"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+
+	<service name="generalService">
+		<port name="generalServices_SOAP" binding="tns:generalServices_SOAP">
+			<soap:address location="http://10.103.17.82:8080/eoc/services/generalServices"/>
+		</port>
+	</service>
+
+</definitions>

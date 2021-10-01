@@ -1,0 +1,4 @@
+import robot
+
+logFile = open('mylog.txt', 'w')
+robot.run("C:/Automation/Robot_Framework/DELL_OTEL/DELL_OTEL.robot",stdout=logFile)

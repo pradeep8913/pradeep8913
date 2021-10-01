@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.1rc1 (Python 3.7.9 on win32)" generated="20210914 13:26:03.962" rpa="false" schemaversion="2">
+<suite id="s1" name="DELL OTEL" source="C:\Automation\Robot_Framework\DELL_OTEL\DELL_OTEL.robot">
+<test id="s1-t1" name="UI_AUTOMATION">
+<kw name="https://www.google.com">
+<arg>chrome</arg>
+<msg timestamp="20210914 13:26:04.593" level="FAIL">No keyword with name 'https://www.google.com' found.</msg>
+<status status="FAIL" starttime="20210914 13:26:04.593" endtime="20210914 13:26:04.593"/>
+</kw>
+<status status="FAIL" starttime="20210914 13:26:04.585" endtime="20210914 13:26:04.594">No keyword with name 'https://www.google.com' found.</status>
+</test>
+<test id="s1-t2" name="REST_API_AUTOMATION-REQUEST LIBRARY">
+<kw name="Set Variable" library="BuiltIn">
+<var>${REST_URL}</var>
+<arg>https://reqres.in/api/users</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20210914 13:26:04.595" level="INFO">${REST_URL} = https://reqres.in/api/users</msg>
+<status status="PASS" starttime="20210914 13:26:04.595" endtime="20210914 13:26:04.596"/>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<arg>${AccessToken}</arg>
+<arg>SET VARIABLE</arg>
+<arg>kdis88Slskks9899==</arg>
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<status status="PASS" starttime="20210914 13:26:04.596" endtime="20210914 13:26:04.596"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Rest_File}</var>
+<arg>{ \ \ \ \ "name": "Pradeep", \ \ \ \ "job": "Technical Leader" }</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20210914 13:26:04.596" level="INFO">${Rest_File} = {     "name": "Pradeep",     "job": "Technical Leader" }</msg>
+<status status="PASS" starttime="20210914 13:26:04.596" endtime="20210914 13:26:04.596"/>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<arg>${Rest_File}</arg>
+<arg>OperatingSystem.Get File</arg>
+<arg>C://Automation//Robot_Framework//DELL_OTEL//Rest_API//test.txt</arg>
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<status status="PASS" starttime="20210914 13:26:04.596" endtime="20210914 13:26:04.597"/>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<arg>&amp;{headers}</arg>
+<arg>Create Dictionary</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=Bearer ${AccessToken}</arg>
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<status status="PASS" starttime="20210914 13:26:04.597" endtime="20210914 13:26:04.597"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20210914 13:26:04.597" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<status status="PASS" starttime="20210914 13:26:04.597" endtime="20210914 13:26:04.598"/>
+</kw>
+<kw name="Post" library="requests">
+<var>@{Response}</var>
+<arg>${REST_URL}</arg>
+<arg>${Rest_File}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20210914 13:26:05.930" level="INFO">@{Response} = [ {"name":"Pradeep","job":"Technical Leader","id":"44","createdAt":"2021-09-14T07:56:05.814Z"} ]</msg>
+<status status="PASS" starttime="20210914 13:26:04.598" endtime="20210914 13:26:05.930"/>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<arg>${TextFileContent_1}=</arg>
+<arg>Replace String</arg>
+<arg>${Rest_File}</arg>
+<arg>"firstName": ""</arg>
+<arg>"firstName": "Pradeep"</arg>
+<arg>3</arg>
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<status status="PASS" starttime="20210914 13:26:05.931" endtime="20210914 13:26:05.931"/>
+</kw>
+<kw name="Convert String to JSON" library="JSONLibrary">
+<var>${Response1}</var>
+<arg>@{Response}</arg>
+<doc>Convert String to JSON object</doc>
+<msg timestamp="20210914 13:26:05.931" level="INFO">${Response1} = {'name': 'Pradeep', 'job': 'Technical Leader', 'id': '44', 'createdAt': '2021-09-14T07:56:05.814Z'}</msg>
+<status status="PASS" starttime="20210914 13:26:05.931" endtime="20210914 13:26:05.931"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${Response2}</var>
+<arg>${Response1}</arg>
+<arg>id</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20210914 13:26:05.960" level="INFO">${Response2} = ['44']</msg>
+<status status="PASS" starttime="20210914 13:26:05.931" endtime="20210914 13:26:05.960"/>
+</kw>
+<status status="PASS" starttime="20210914 13:26:04.595" endtime="20210914 13:26:05.961"/>
+</test>
+<test id="s1-t3" name="SOAP_API_Automation">
+<kw name="Runkeyword    Create Soap Client    D:/TAG_Automation/WSDLs/INT_326_A-B-C-D-generalServices/generalServices.wsdl    EOC_OrderStatus" type="SETUP">
+<msg timestamp="20210914 13:26:05.966" level="FAIL">No keyword with name 'Runkeyword    Create Soap Client    D:/TAG_Automation/WSDLs/INT_326_A-B-C-D-generalServices/generalServices.wsdl    EOC_OrderStatus' found.</msg>
+<status status="FAIL" starttime="20210914 13:26:05.966" endtime="20210914 13:26:05.966"/>
+</kw>
+<status status="FAIL" starttime="20210914 13:26:05.961" endtime="20210914 13:26:05.967">Setup failed:
+No keyword with name 'Runkeyword    Create Soap Client    D:/TAG_Automation/WSDLs/INT_326_A-B-C-D-generalServices/generalServices.wsdl    EOC_OrderStatus' found.</status>
+</test>
+<status status="FAIL" starttime="20210914 13:26:03.966" endtime="20210914 13:26:05.976"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="2" skip="0" id="s1" name="DELL OTEL">DELL OTEL</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
